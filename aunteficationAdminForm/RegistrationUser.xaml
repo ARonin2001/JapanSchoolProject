@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:aunteficationAdminForm"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:Obselete="clr-namespace:Xceed.Wpf.Toolkit.Obselete;assembly=Xceed.Wpf.Toolkit" x:Class="aunteficationAdminForm.RegistrationUser"
         mc:Ignorable="d"
-        Title="RegistrationUser" Height="450" Width="800">
+        Title="RegistrationUser" Height="460" Width="800">
 
     <Window.Resources>
         <Style TargetType="Button">
@@ -27,6 +27,15 @@
             <RowDefinition MaxHeight="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.06*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" x:Name="Before" Style="{x:Null}" Content="BEFORE" Height="30" VerticalAlignment="Top" Click="Before_Click"/>
+        </Grid>
+        
         <TextBlock Text="РЕГИСТРАЦИЯ" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22"/>
 
         <Grid Grid.Row="1">
@@ -56,7 +65,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition Height="0.10*"/>
+                        <RowDefinition Height="0.1*"/>
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" Grid.Column="1">
@@ -120,7 +129,7 @@
                     <StackPanel Grid.Row="2" Grid.Column="1">
                         <Label Content="* Дата рождения"/>
                         <Border >
-                            <DatePicker x:Name="dateBirth" Height="30" BorderBrush="{x:Null}"/>
+                            <DatePicker x:Name="dateBirth" Height="30" BorderBrush="{x:Null}" DisplayDate="2020-11-10"/>
                         </Border>
                     </StackPanel>
 
@@ -128,7 +137,5 @@
                 </Grid>
             </Grid>
         </Grid>
-
-
     </Grid>
 </Window>

@@ -60,7 +60,7 @@ namespace aunteficationAdminForm
 
                     DataTable dataTable = new DataTable();
                     MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
-                    MySqlCommand command = new MySqlCommand($"SELECT * FROM {nameBd} WHERE `log` LIKE @uL AND par LIKE @uP", db.getConnection());
+                    MySqlCommand command = new MySqlCommand($"SELECT * FROM {nameBd} WHERE `log` LIKE @uL AND par LIKE MD5(@uP)", db.getConnection());
                     command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
                     command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 

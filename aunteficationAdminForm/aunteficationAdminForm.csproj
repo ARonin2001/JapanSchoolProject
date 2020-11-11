@@ -84,9 +84,16 @@
     <Compile Include="Previes.xaml.cs">
       <DependentUpon>Previes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistrationMeneger.xaml.cs">
+      <DependentUpon>RegistrationMeneger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationOperator.xaml.cs">
+      <DependentUpon>RegistrationOperator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationUser.xaml.cs">
       <DependentUpon>RegistrationUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="registrationUsers.cs" />
     <Compile Include="RememberForm.xaml.cs">
       <DependentUpon>RememberForm.xaml</DependentUpon>
     </Compile>
@@ -127,6 +134,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Previes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrationMeneger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrationOperator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

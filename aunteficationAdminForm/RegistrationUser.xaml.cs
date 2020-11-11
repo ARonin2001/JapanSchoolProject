@@ -21,13 +21,14 @@ namespace aunteficationAdminForm
     /// </summary>
     public partial class RegistrationUser : Window
     {
-        internal string nameDb = "";
+        private string nameDb = "";
         public string gender = "";
-
+        public string sqlCom = "";
 
         public RegistrationUser()
         {
             InitializeComponent();
+
         }
 
         private void email_TextChanged(object sender, TextChangedEventArgs e)
@@ -43,38 +44,86 @@ namespace aunteficationAdminForm
                 
             //    MessageBox.Show(email.Text);
             //}
-
-            
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                bool textBoxInputBool = false; // для проверки на пустоту полей
 
-                string[] textBoxText = { name.Text, surName.Text, fatherName.Text, gender, email.Text, phone.Text, dateBirth.Text };
-
-                foreach(string textBT in textBoxText)
+                string[] textBoxText = { name.Text, surName.Text, gender, email.Text, phone.Text, dateBirth.Text }; // заносим данные с полей
+                string fatherNameSql = fatherName.Text;
+                
+                // перебираем данные с поелй дл проверки на пустоту строк
+                for(int i = 0; i < textBoxText.Length; i++)
                 {
-                    //if(textBoxText[textBT] == "")
-                    MessageBox.Show(textBT);
+                    if (textBoxText[i] == "") textBoxInputBool = true;
                 }
 
-                //if (email.Text != "")ff
-                //{
-                //    String mailUser = email.Text;
+                // вывод, если какая-то строка пустая
+                if(textBoxInputBool)
+                {
+                    MessageBox.Show("Заполните все данные. *Отчество  не обязательно", "", MessageBoxButton.OK);
+                // если нет пустых строк и выбран пол
+                } else if(textBoxInputBool == false && gender != "")
+                {
+                    try
+                    {
+                        // переводим дату рождения в американский формат
+                        string oneDate = "";
+                        string twoDate = "";
 
-                //    dataBase db = new dataBase();
+                        string[] strDate = dateBirth.Text.Split(new char[] { '.' });
 
-                //    DataTable dataTable = new DataTable();
-                //    MySqlDataAdapter adapter = new MySqlDataAdapter();
-                //    MySqlCommand command = new MySqlCommand("", db.getConnection());
+                        oneDate = strDate[2];
+                        twoDate = strDate[0];
 
-                //    adapter.SelectCommand = command;
-                //    adapter.Fill(dataTable);
+                        string dateBirthSql = oneDate + "." + strDate[1] + "." + twoDate;
 
-                //}
+                        if (fatherNameSql == "") fatherNameSql = " ";
+
+                        // проверка на выбранную должность и создание SQL команды
+                        if (nameDb == "meneger")
+                            sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, polojenie, gender, dateBirth, salary)" +
+                            $" VALUES('{name.Text}', '{surName.Text}', '{fatherNameSql}', '{email.Text}', '{phone.Text}', CURDATE(), 'Работает', 'активен', '{gender}', '{dateBirthSql}', 0)";
+                        else if (nameDb == "operator")
+                            sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, polojenie, gender, dateBirth, salary)" +
+                            $" VALUES('{name.Text}', '{surName.Text}', '{fatherNameSql}', '{email.Text}', '{phone.Text}', CURDATE(), 'Работает', 'активен', '{gender}', '{dateBirthSql}', 0)";
+
+                        // работа с бд
+
+                        //String mailUser = email.Text;
+
+                        MessageBox.Show(sqlCom);
+
+                        dataBase db = new dataBase();
+
+                        DataTable dataTable = new DataTable();
+                        MySqlDataAdapter adapter = new MySqlDataAdapter();
+                        MySqlCommand command = new MySqlCommand(sqlCom, db.getConnection());
+
+                        adapter.SelectCommand = command;
+                        adapter.Fill(dataTable);
+
+                        if(nameDb == "meneger")
+                        {
+                            RegistrationMeneger registrationForm = new RegistrationMeneger();
+                            this.Close();
+                            registrationForm.Show();
+                        } else if(nameDb == "operator")
+                        {
+                            RegistrationOperator registrationForm = new RegistrationOperator();
+                            this.Close();
+                            registrationForm.Show();
+                        }
+                    } catch
+                    {
+                        MessageBox.Show("Выберите регистрируемую должность", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    
+                }
+
             }
             catch
             {
@@ -82,24 +131,34 @@ namespace aunteficationAdminForm
                     "Error",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
+
             }
         }
 
+        // занесение в переменную имя выбранной должности для регистрациии
         private void userList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             ComboBox comboBox = (ComboBox)sender;
             ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
 
-            if (selectedItem.Name == "memeger")
+            if (selectedItem.Name == "meneger")
                 nameDb = "meneger";
-            else if (selectedItem.Name == "memeger")
+            else if (selectedItem.Name == "operator")
                 nameDb = "operator";
         }
 
+        // занесение пола в переменную
         private void m_Checked(object sender, RoutedEventArgs e)
         {
             gender = ((RadioButton)sender).Name;
+        }
+
+        private void Before_Click(object sender, RoutedEventArgs e)
+        {
+            AdminFrom adminFrom = new AdminFrom();
+            this.Close();
+            adminFrom.Show();
+
         }
     }
 }

@@ -64,3 +64,7 @@ C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\bin\Debug\sv\Xceed.
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\App.baml
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\TextBoxStyle.baml
+C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationMeneger.g.cs
+C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationOperator.g.cs
+C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationMeneger.baml
+C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationOperator.baml

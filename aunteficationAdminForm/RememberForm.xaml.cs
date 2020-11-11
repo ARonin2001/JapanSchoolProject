@@ -33,7 +33,7 @@ namespace aunteficationAdminForm
                 int x;
 
                 MailAddress fromMailAddress = new MailAddress("a_platon.2001@mail.ru", "japaneseProject");
-                MailAddress toMailAddress = new MailAddress("a_platon.2001@mail.ru", "me");
+                MailAddress toMailAddress = new MailAddress("kigix36941@idcbill.com");
 
                 if (!String.IsNullOrEmpty(Email.Text) && !int.TryParse(Email.Text, out x))
                 {
@@ -41,32 +41,16 @@ namespace aunteficationAdminForm
 
                     msg.Subject = "test message";
 
-                    msg.Body = "<h1>Hello</h1>";
+                    msg.Body = "<h1 style='font-size: 60px; color: pink; text-align: center;'>Hello</h1>";
                     msg.IsBodyHtml = true;
 
-                    SmtpClient smtp = new SmtpClient("smtp.mail.ru", 465);
+                    SmtpClient smtp = new SmtpClient("smtp.mail.ru", 587);
                     smtp.Credentials = new NetworkCredential("a_platon.2001@mail.ru", "bokuhapuratondesu");
                     smtp.EnableSsl = true;
                     smtp.Send(msg);
 
-                    MessageBox.Show("good");
-
-
-                    //MailMessage mailMessage = new MailMessage(fromMailAddress, toMailAddress);
-                    //mailMessage.Body = "first text mail";
-                    //mailMessage.Subject = "mail Label!";
-
-                    //SmtpClient smtpClient = new SmtpClient();
-                    //smtpClient.Host = "smtp.mail.ru";
-                    //smtpClient.Port = 465;
-                    //smtpClient.EnableSsl = true;
-                    //smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    //smtpClient.UseDefaultCredentials = false;
-                    //smtpClient.Credentials = new NetworkCredential(fromMailAddress.Address, "bokuhapuratondesu");
-
-                    //smtpClient.Send(mailMessage);
-
-                    //MessageBox.Show("good");
+                    MessageBox.Show("На вашу почту отправлен код подтверждения", "Message",
+                        MessageBoxButton.OK);
                 }
                 else
                 {
