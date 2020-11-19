@@ -25,7 +25,7 @@ namespace aunteficationAdminForm
             try
             {
                 sqlCom = $"INSERT INTO {NameDbOne} (log, par, {idAutorizUser})" +
-                $" VALUES((SELECT MAX(mail) FROM {NameDbTwo}), MD5('{par}'), (SELECT MAX({idUser}) FROM {NameDbTwo}))";
+                $" VALUES((SELECT mail FROM {NameDbTwo} ORDER BY {idUser} DESC LIMIT 1), MD5('{par}'), (SELECT MAX({idUser}) FROM {NameDbTwo}))";
 
                 dataBase db = new dataBase();
 

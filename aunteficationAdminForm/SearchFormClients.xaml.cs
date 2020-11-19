@@ -27,7 +27,7 @@ namespace aunteficationAdminForm
         public bool WindowLoad;
         public string nameDb = "meneger";
 
-        public string gender = "AND gender in('w' AND 'm' AND 'a')";
+        public string gender = "AND gender in('w' AND 'm')";
 
         public int ageOt;
         public string ageForSql = "(YEAR(CURRENT_DATE)-YEAR(dateBirth))-(RIGHT(CURRENT_DATE,5)<RIGHT(dateBirth,5))";
@@ -50,6 +50,11 @@ namespace aunteficationAdminForm
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            btnVisibility();
+        }
+
+        public void btnVisibility()
         {
             if (searchContent.Visibility == Visibility)
             {
@@ -96,11 +101,6 @@ namespace aunteficationAdminForm
         }
         // search TextBox End
 
-        private void searchBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void genderMen_Checked(object sender, RoutedEventArgs e)
         {
             switch (((RadioButton)sender).Name)
@@ -114,7 +114,7 @@ namespace aunteficationAdminForm
                     sqlDataBaseSearch();
                     break;
                 case "genderAll":
-                    gender = "AND gender in('w' AND 'm' AND 'a')";
+                    gender = "AND gender in('w' AND 'm')";
                     sqlDataBaseSearch();
                     break;
             }
@@ -148,21 +148,21 @@ namespace aunteficationAdminForm
         private void sqlDataBaseSearch()
         {
 
-                commandSqlText = $"SELECT * FROM {nameDb} WHERE ((name LIKE '{searchInput.Text}%')" +
-                $" OR (surName LIKE '{searchInput.Text}%')" +
-                $" OR (fatherName LIKE '{searchInput.Text}%')) {gender}" +
-                $" AND ({ageForSql} >= {ageStart} AND " +
-                $"{ageForSql} <= {ageEnd}) {citySql}";
+            commandSqlText = $"SELECT * FROM {nameDb} WHERE ((name LIKE '{searchInput.Text}%')" +
+            $" OR (surName LIKE '{searchInput.Text}%')" +
+            $" OR (fatherName LIKE '{searchInput.Text}%')) {gender}" +
+            $" AND ({ageForSql} >= {ageStart} AND " +
+            $"{ageForSql} <= {ageEnd}) {citySql}";
 
-                dataBase db = new dataBase();
+            dataBase db = new dataBase();
 
-                DataTable dataTable = new DataTable();
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
-                MySqlCommand command = new MySqlCommand(commandSqlText, db.getConnection());
+            DataTable dataTable = new DataTable();
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand(commandSqlText, db.getConnection());
 
-                dataAdapter.SelectCommand = command;
-                dataAdapter.Fill(dataTable);
-                userInfromation.ItemsSource = dataTable.AsDataView();
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(dataTable);
+            userInfromation.ItemsSource = dataTable.AsDataView();
 
         }
         // show BD End
@@ -210,5 +210,12 @@ namespace aunteficationAdminForm
 
         }
         //ageSearch End
+
+        private void beforeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AdminFrom adminFrom = new AdminFrom();
+            this.Close();
+            adminFrom.Show();
+        }
     }
 }

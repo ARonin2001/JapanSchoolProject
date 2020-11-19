@@ -33,7 +33,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" x:Name="Before" Style="{x:Null}" Content="BEFORE" Height="30" VerticalAlignment="Top" Click="Before_Click"/>
+            <Button Grid.Column="0" x:Name="Before" Style="{x:Null}" Content="BEFORE" Height="30" VerticalAlignment="Top" Click="Before_Click" HorizontalAlignment="Left" Width="45"/>
         </Grid>
         
         <TextBlock Text="РЕГИСТРАЦИЯ" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22"/>
@@ -43,10 +43,20 @@
                 <RowDefinition MaxHeight="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <xctk:PropertyGridEditorComboBox Grid.Row="0" x:Name="userList" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" SelectionChanged="userList_SelectionChanged">
-                <ComboBoxItem x:Name="meneger" Content="Менеджер"/>
-                <ComboBoxItem x:Name="operator" Content="Оператор"/>
-            </xctk:PropertyGridEditorComboBox>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Content="Регистрируемая должность" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                <xctk:PropertyGridEditorComboBox Grid.Column="1" x:Name="userList" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" SelectionChanged="userList_SelectionChanged">
+                    <ComboBoxItem x:Name="meneger" Content="Менеджер"/>
+                    <ComboBoxItem x:Name="operator" Content="Оператор"/>
+                </xctk:PropertyGridEditorComboBox>
+            </Grid>
+            
 
             <Grid Grid.Row="1" Margin="10 5 10 0">
                 <Grid.ColumnDefinitions>
@@ -117,13 +127,13 @@
                         <Border>
                             <TextBox x:Name="email" Height="30" TextChanged="email_TextChanged"/>
                         </Border>
-                        <Label Name="emaiLabel" Content="" Foreground="OrangeRed"/>
+                        <Label Name="emaiLabel" Foreground="OrangeRed"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="1">
                         <Label Content="Телефон"/>
                         <Border>
                             <xctk:MaskedTextBox x:Name="phone" Mask="+7(999)999-99-99"  Height="30"
-                            TextWrapping="Wrap" Text="MaskedTextBox"/>
+                            TextWrapping="Wrap" Text="+7(___)___-__-__" />
                         </Border>
                     </StackPanel>
                     <StackPanel Grid.Row="2" Grid.Column="1">
@@ -133,7 +143,7 @@
                         </Border>
                     </StackPanel>
 
-                    <Button Content="ДАЛЬШЕ" Grid.Column="1" Grid.Row="3" MaxHeight="35" Width="100" Foreground="#ffffff" HorizontalAlignment="Right" Click="Button_Click"/>
+                    <Button x:Name="intoSqlDbBtn" Content="ДАЛЬШЕ" Grid.Column="1" Grid.Row="3" MaxHeight="35" Width="100" Foreground="#ffffff" HorizontalAlignment="Right" Click="Button_Click"/>
                 </Grid>
             </Grid>
         </Grid>

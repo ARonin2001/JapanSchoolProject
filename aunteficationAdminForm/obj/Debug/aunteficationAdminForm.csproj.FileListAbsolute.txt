@@ -36,12 +36,10 @@ C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\bin\Debug\System.Ru
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\aunteficationAdminForm.exe.config
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\AdminFrom.g.cs
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\AdminFrom.baml
-C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\Dormitory.g.cs
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\Previes.g.cs
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationUser.g.cs
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\SchoolList.g.cs
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\SchoolProgram.g.cs
-C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\Dormitory.baml
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\Previes.baml
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationUser.baml
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\SchoolList.baml
@@ -68,3 +66,6 @@ C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\Registrat
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationOperator.g.cs
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationMeneger.baml
 C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\RegistrationOperator.baml
+C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\messageBoxCorrectAdd.g.cs
+C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\messageBoxCorrectAdd.baml
+C:\Users\Людмила\Desktop\Japan\aunteficationAdminForm\obj\Debug\styleButton.baml

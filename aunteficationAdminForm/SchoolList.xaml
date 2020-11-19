@@ -5,8 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aunteficationAdminForm"
         mc:Ignorable="d"
-        Title="SchoolList" Height="450" Width="800">
+        Title="SchoolList" MinHeight="506" MinWidth="780" Width="800" Loaded="Window_Loaded" >
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="100px"/>
+            <!--HEADER-->
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Header start-->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition MaxWidth="180px"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <!--BurgerButton-->
+                    <Button x:Name="btnVisibl" MaxWidth="30px" MaxHeight="30px" Grid.Column="1" Grid.Row="1" FontFamily="Segoe MDL2 Assets" FontSize="28" Content="&#xE700;" 
+                            HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Cursor="Hand" Style="{x:Null}" Click="btnVisibl_Click" >
+                    </Button>
+                </Grid>
+                
+                <Button x:Name="beforeBtn" Content="Назад" Margin="6" HorizontalAlignment="Left" Width="50" Click="beforeBtn_Click"/>
+                <TextBlock Grid.Row="0" Text="ЯЗЫКОВЫЕ ШКОЛЫ" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontFamily="Arial" FontSize="25"/>
+                <Border Grid.Row="1" BorderBrush="Red" BorderThickness="1" MaxWidth="400" MaxHeight="30px">
+                    <TextBox x:Name="searchInput" TextChanged="searchInput_TextChanged"/>
+                </Border>
+            </Grid>
+        </Grid>
+        <!--Header end-->
+
+        <!--klient List start-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition x:Name="dopSearch" MaxWidth="0"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel x:Name="searchContent" Grid.Column="1" Visibility="Hidden">
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <Label Content="ОТ" VerticalContentAlignment="Center" Margin="0 0 0 0" />
+                    <ComboBox x:Name="ageFor" MaxHeight="23" MinWidth="50" >
+                    </ComboBox>
+                    <Label Content="ДО" VerticalContentAlignment="Center" Margin="35 0 0 0" />
+                    <ComboBox x:Name="ageUp" MaxHeight="23" MinWidth="50" >
+                    </ComboBox>
+                </StackPanel>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="ПОЛ" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <StackPanel x:Name="genderCheck" Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Left" Margin="10 5 0 0" >
+                    <RadioButton x:Name="genderMen" Content="Мужской" Margin="0 0 0 5"   />
+                    <RadioButton x:Name="genderWomen" Content="Женский" Margin="0 0 0 5" />
+                    <RadioButton x:Name="genderAll" Content="Любой" />
+                </StackPanel>
+
+                <StackPanel x:Name="cityContainer" HorizontalAlignment="Center" Margin="0 20 0 0" Visibility="Hidden">
+                    <Label Content="Место жительства" FontFamily="30"/>
+
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+                        <ComboBox x:Name="cityList" Margin="0 5 0 0"  />
+                    </ScrollViewer>
+
+                </StackPanel>
+            </StackPanel>
+
+            <Grid Grid.Row="1" Grid.Column="0" x:Name="RootLayout">
+                <DataGrid x:Name="infoSchools" MinHeight="355" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="600"/>
+            </Grid>
+            <!--klient List end-->
+
+        </Grid>
     </Grid>
 </Window>

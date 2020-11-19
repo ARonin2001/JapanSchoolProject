@@ -5,8 +5,102 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aunteficationAdminForm"
         mc:Ignorable="d"
-        Title="Previes" Height="450" Width="800">
+        Title="Previes" Height="500" Width="900">
+
+    <Window.Resources>
+        <Style x:Key="btnEntry" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="#ff676b" BorderThickness="1" Padding="12 5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.08*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="beforeBtn" Content="Назад" Margin="6" Click="beforeBtn_Click"/>
+            <TextBlock Grid.Column="1" Text="ТИПЫ УСЛУГ" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Margin="0 0 50 0"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.70*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DataGrid x:Name="typesGrid" SelectionChanged="typesGrid_SelectionChanged">
+                    <!--<DataGrid.ItemContainerStyle>
+                        <Style TargetType="DataGridRow">
+                            <EventSetter Event="Click"/>
+                        </Style>
+                    </DataGrid.ItemContainerStyle>-->
+                </DataGrid>
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.09*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.10*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.20*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Тип" FontSize="15" Margin="10 0 0 0"/>
+                    <TextBlock Grid.Column="1" Text="Цена" FontSize="15"/>
+                </Grid>
+                
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Margin="5" x:Name="type" MaxLength="42"/>
+                    <TextBox Grid.Column="1" Margin="3" x:Name="price" MaxLength="9"/>
+                </Grid>
+
+                <TextBlock Grid.Row="2" Margin="10 0 0 0" Text="Описание" FontSize="15"/>
+                <TextBox x:Name="description" Grid.Row="3" Margin="10" TextWrapping="Wrap" MaxLength="2997"/>
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="deleteBtn" Content="Удалить" Style="{StaticResource btnEntry}" Foreground="#ffffff" FontSize="17" MaxWidth="150" MaxHeight="40" Click="deleteBtn_Click"/>
+                    <Button Grid.Column="1" x:Name="chengeBtn" Content="Редок/Доб" Style="{StaticResource btnEntry}" Foreground="#000" FontSize="17" MaxWidth="150" MaxHeight="40" Click="chengeBtn_Click"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

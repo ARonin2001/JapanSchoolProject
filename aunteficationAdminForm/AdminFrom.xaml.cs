@@ -20,7 +20,7 @@ namespace aunteficationAdminForm
     public partial class AdminFrom : Window
     {
 
-        Dormitory dormitoryList = new Dormitory();
+        //Dormitory dormitoryList = new Dormitory();
         Previes previes = new Previes();
         RegistrationUser regUser = new RegistrationUser();
         SchoolList schoolList = new SchoolList();
@@ -48,10 +48,10 @@ namespace aunteficationAdminForm
                     this.Close();
                     previes.Show();
                     break;
-                case "dormotory":
-                    this.Close();
-                    dormitoryList.Show();
-                    break;
+                //case "dormotory":
+                //    this.Close();
+                //    dormitoryList.Show();
+                //    break;
                 case "programSchool":
                     this.Close();
                     schoolProgram.Show();

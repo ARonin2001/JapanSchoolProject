@@ -77,9 +77,10 @@
     <Compile Include="AdminFrom.xaml.cs">
       <DependentUpon>AdminFrom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangeDate.cs" />
     <Compile Include="dataBase.cs" />
-    <Compile Include="Dormitory.xaml.cs">
-      <DependentUpon>Dormitory.xaml</DependentUpon>
+    <Compile Include="messageBoxCorrectAdd.xaml.cs">
+      <DependentUpon>messageBoxCorrectAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Previes.xaml.cs">
       <DependentUpon>Previes.xaml</DependentUpon>
@@ -114,10 +115,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dormitory.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="LabelClients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,6 +130,10 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="messageBoxCorrectAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Previes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SearchFormClients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="styleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

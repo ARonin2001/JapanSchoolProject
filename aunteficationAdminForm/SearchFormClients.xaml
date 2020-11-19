@@ -5,27 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aunteficationAdminForm"
         mc:Ignorable="d"
-        Title="SearchFormClients" MinHeight="506" MinWidth="780" Width="800" Loaded="Window_Loaded" >
-    <Window.Resources>
-        <!--<Style x:Key="searchBtn" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" BorderBrush="#ff676b" Background="Transparent" BorderThickness="1" Padding="12 5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+        Title="Поиск Клиентов" MinHeight="506" MinWidth="780" Width="800" Loaded="Window_Loaded" >
 
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    --><!--<Setter Property="Foreground" Value="#ffffff" />--><!--
-                    <Setter Property="Background" Value="#ff676b" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>-->
-    </Window.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
@@ -69,6 +50,8 @@
                         operator
                     </ComboBoxItem>
                 </ComboBox>
+
+                <Button x:Name="beforeBtn" Content="Назад" Margin="6" HorizontalAlignment="Left" Width="50" Click="beforeBtn_Click"/>
                 <TextBlock Grid.Row="0" Text="ПОИСК КЛИЕНТОВ" HorizontalAlignment="Center" VerticalAlignment="Center"
                        FontFamily="Arial" FontSize="25"/>
                 <Border Grid.Row="1" BorderBrush="Red" BorderThickness="1" MaxWidth="400" MaxHeight="30px">
@@ -109,7 +92,6 @@
                         <ComboBox x:Name="cityList" Margin="0 5 0 0" SelectionChanged="cityList_SelectionChanged" />
                     </ScrollViewer>
                     
-                    <!--<Button x:Name="searchBtn" MinHeight="25" Margin="0 15 0 0" Content="ПОИСК" Style="{StaticResource searchBtn}" Click="searchBtn_Click"/>-->
                 </StackPanel>
             </StackPanel>
 

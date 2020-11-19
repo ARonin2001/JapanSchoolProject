@@ -21,14 +21,17 @@ namespace aunteficationAdminForm
     /// </summary>
     public partial class RegistrationUser : Window
     {
+
+        dataBase db = new dataBase();
+
         private string nameDb = "";
         public string gender = "";
         public string sqlCom = "";
 
+
         public RegistrationUser()
         {
             InitializeComponent();
-
         }
 
         private void email_TextChanged(object sender, TextChangedEventArgs e)
@@ -41,9 +44,16 @@ namespace aunteficationAdminForm
             //if (a != "@")
             //{
             //    emaiLabel.Content = "Введите почту";
-                
+
             //    MessageBox.Show(email.Text);
             //}
+
+            emaiLabel.Content = dataBase.checkData(email.Text, "mail"); // результат о идентичных почтах в бд
+
+            if (emaiLabel.Content.ToString() != "")
+                intoSqlDbBtn.IsEnabled = false;
+            else
+                intoSqlDbBtn.IsEnabled = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -51,6 +61,8 @@ namespace aunteficationAdminForm
             try
             {
                 bool textBoxInputBool = false; // для проверки на пустоту полей
+
+                string result = dataBase.checkData(phone.Text, "phone"); // результат о идентичных почтах в бд
 
                 string[] textBoxText = { name.Text, surName.Text, gender, email.Text, phone.Text, dateBirth.Text }; // заносим данные с полей
                 string fatherNameSql = fatherName.Text;
@@ -68,60 +80,55 @@ namespace aunteficationAdminForm
                 // если нет пустых строк и выбран пол
                 } else if(textBoxInputBool == false && gender != "")
                 {
-                    try
+                    if (result == "")
                     {
-                        // переводим дату рождения в американский формат
-                        string oneDate = "";
-                        string twoDate = "";
-
-                        string[] strDate = dateBirth.Text.Split(new char[] { '.' });
-
-                        oneDate = strDate[2];
-                        twoDate = strDate[0];
-
-                        string dateBirthSql = oneDate + "." + strDate[1] + "." + twoDate;
-
-                        if (fatherNameSql == "") fatherNameSql = " ";
-
-                        // проверка на выбранную должность и создание SQL команды
-                        if (nameDb == "meneger")
-                            sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, polojenie, gender, dateBirth, salary)" +
-                            $" VALUES('{name.Text}', '{surName.Text}', '{fatherNameSql}', '{email.Text}', '{phone.Text}', CURDATE(), 'Работает', 'активен', '{gender}', '{dateBirthSql}', 0)";
-                        else if (nameDb == "operator")
-                            sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, polojenie, gender, dateBirth, salary)" +
-                            $" VALUES('{name.Text}', '{surName.Text}', '{fatherNameSql}', '{email.Text}', '{phone.Text}', CURDATE(), 'Работает', 'активен', '{gender}', '{dateBirthSql}', 0)";
-
-                        // работа с бд
-
-                        //String mailUser = email.Text;
-
-                        MessageBox.Show(sqlCom);
-
-                        dataBase db = new dataBase();
-
-                        DataTable dataTable = new DataTable();
-                        MySqlDataAdapter adapter = new MySqlDataAdapter();
-                        MySqlCommand command = new MySqlCommand(sqlCom, db.getConnection());
-
-                        adapter.SelectCommand = command;
-                        adapter.Fill(dataTable);
-
-                        if(nameDb == "meneger")
+                        try
                         {
-                            RegistrationMeneger registrationForm = new RegistrationMeneger();
-                            this.Close();
-                            registrationForm.Show();
-                        } else if(nameDb == "operator")
-                        {
-                            RegistrationOperator registrationForm = new RegistrationOperator();
-                            this.Close();
-                            registrationForm.Show();
+
+                            string dateBirthSql = ChangeDate.dateAmerica(dateBirth.Text); // получаем изменённую дату в американском формате
+
+                            if (fatherNameSql == "") fatherNameSql = " ";
+
+                            // проверка на выбранную должность и создание SQL команды
+                            if (nameDb == "meneger")
+                                sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, polojenie, gender, dateBirth, salary)" +
+                                $" VALUES('{name.Text}', '{surName.Text}', '{fatherNameSql}', '{email.Text}', '{phone.Text}', CURDATE()," +
+                                $" 'Работает', 'активен', '{gender}', '{dateBirthSql}', 0)";
+                            else if (nameDb == "operator")
+                                sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, polojenie, gender, dateBirth, salary)" +
+                                $" VALUES('{name.Text}', '{surName.Text}', '{fatherNameSql}', '{email.Text}', '{phone.Text}'," +
+                                $" CURDATE(), 'Работает', 'активен', '{gender}', '{dateBirthSql}', 0)";
+
+                            // работа с бд
+
+                            DataTable dataTable = new DataTable();
+                            MySqlDataAdapter adapter = new MySqlDataAdapter();
+                            MySqlCommand command = new MySqlCommand(sqlCom, db.getConnection());
+
+                            adapter.SelectCommand = command;
+                            adapter.Fill(dataTable);
+
+                            if (nameDb == "meneger")
+                            {
+                                RegistrationMeneger registrationForm = new RegistrationMeneger();
+                                this.Close();
+                                registrationForm.Show();
+                            }
+                            else if (nameDb == "operator")
+                            {
+                                RegistrationOperator registrationForm = new RegistrationOperator();
+                                this.Close();
+                                registrationForm.Show();
+                            }
                         }
-                    } catch
+                        catch
+                        {
+                            MessageBox.Show("Выберите регистрируемую должность", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    } else
                     {
-                        MessageBox.Show("Выберите регистрируемую должность", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("Данный номер уже используется");
                     }
-                    
                 }
 
             }
@@ -133,6 +140,8 @@ namespace aunteficationAdminForm
                     MessageBoxImage.Error);
 
             }
+
+           
         }
 
         // занесение в переменную имя выбранной должности для регистрациии

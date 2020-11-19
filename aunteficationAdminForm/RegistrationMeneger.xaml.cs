@@ -24,23 +24,32 @@ namespace aunteficationAdminForm
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+       
+
+        private void login_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(login.Text != "" && login.Text != " ")
+            if (login.Text.Length >= 6) 
+                registerButton.IsEnabled = true;
+            else
+                registerButton.IsEnabled = false;
+
+            if (login.Text.Length < 6)
+                warning.Visibility = Visibility;
+            else
+                warning.Visibility = Visibility.Hidden;
+        }
+
+        private void registerButton_Click(object sender, RoutedEventArgs e)
+        {
+            while (login.Text.Length < 6) registerButton.IsEnabled = false;
+
+            if (login.Text != "" && login.Text != " ")
             {
                 registrationUsers rgUsers = new registrationUsers("autoriz_men", "meneger");
                 rgUsers.intoDateUser("meneger_idmeneger", "idmeneger", login.Text);
 
                 MessageBox.Show("Всё сработало!)");
             }
-        }
-
-        private void login_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (login.Text.Length < 6)
-                warning.Visibility = Visibility;
-            else
-                warning.Visibility = Visibility.Hidden;
         }
     }
 }
