@@ -91,22 +91,27 @@ namespace aunteficationAdminForm
 
                             // проверка на выбранную должность и создание SQL команды
                             if (nameDb == "meneger")
-                                sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, polojenie, gender, dateBirth, salary)" +
+                                sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, gender, dateBirth, salary)" +
                                 $" VALUES('{name.Text}', '{surName.Text}', '{fatherNameSql}', '{email.Text}', '{phone.Text}', CURDATE()," +
-                                $" 'Работает', 'активен', '{gender}', '{dateBirthSql}', 0)";
+                                $" 'активен', '{gender}', '{dateBirthSql}', 0)";
                             else if (nameDb == "operator")
-                                sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, polojenie, gender, dateBirth, salary)" +
+                                sqlCom = $"INSERT INTO {nameDb} (name, surName, fatherName, mail, phone, datePost, status, gender, dateBirth, salary)" +
                                 $" VALUES('{name.Text}', '{surName.Text}', '{fatherNameSql}', '{email.Text}', '{phone.Text}'," +
-                                $" CURDATE(), 'Работает', 'активен', '{gender}', '{dateBirthSql}', 0)";
+                                $" CURDATE(), 'активен', '{gender}', '{dateBirthSql}', 0)";
 
                             // работа с бд
 
-                            DataTable dataTable = new DataTable();
-                            MySqlDataAdapter adapter = new MySqlDataAdapter();
-                            MySqlCommand command = new MySqlCommand(sqlCom, db.getConnection());
+                            //DataTable dataTable = new DataTable();
+                            //MySqlDataAdapter adapter = new MySqlDataAdapter();
+                            //MySqlCommand command = new MySqlCommand(sqlCom, db.getConnection());
 
-                            adapter.SelectCommand = command;
-                            adapter.Fill(dataTable);
+                            //db.openConnectionPort();
+                            //command.ExecuteNonQuery();
+                            //db.closeConnectionPort();
+
+                            executeSqlCode();
+                            //adapter.SelectCommand = command;
+                            //adapter.Fill(dataTable);
 
                             if (nameDb == "meneger")
                             {
@@ -121,9 +126,9 @@ namespace aunteficationAdminForm
                                 registrationForm.Show();
                             }
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            MessageBox.Show("Выберите регистрируемую должность", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            MessageBox.Show(ex.Message, "", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                     } else
                     {
@@ -140,8 +145,17 @@ namespace aunteficationAdminForm
                     MessageBoxImage.Error);
 
             }
+        }
 
-           
+        void executeSqlCode()
+        {
+            DataTable dataTable = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand(sqlCom, db.getConnection());
+
+            db.openConnectionPort();
+            command.ExecuteNonQuery();
+            db.closeConnectionPort();
         }
 
         // занесение в переменную имя выбранной должности для регистрациии

@@ -70,7 +70,7 @@ namespace aunteficationAdminForm
                         DataRowView view = (DataRowView)typesGrid.SelectedItem;
                         var rowColl = view[0];
 
-                        commandSqlText = $"DELETE FROM typeservice WHERE id = {rowColl}";
+                        commandSqlText = $"DELETE FROM typeservice WHERE id = {rowColl}; SELECT * FROM typeservice";
 
                         MySqlCommand command = new MySqlCommand(commandSqlText, db.getConnection());
                         dataAdapter.SelectCommand = command;
@@ -114,16 +114,12 @@ namespace aunteficationAdminForm
                 rowCol = view[0].ToString();
                 type.Text = view[1].ToString();
                 price.Text = view[2].ToString();
-                description.Text =view[3].ToString();
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                description.Text = view[3].ToString();
             }
-        }
-
-        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
+            catch
+            {
+                //MessageBox.Show(ex.Message);
+            }
         }
     }
 }

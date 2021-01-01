@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aunteficationAdminForm"
         mc:Ignorable="d"
-        Title="АДМИНИСТРАТИВНАЯ ПАНЕЛЬ" Height="450" Width="800">
+        Title="АДМИНИСТРАТИВНАЯ ПАНЕЛЬ" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="MaxHeight" Value="40"/>
             <Setter Property="MaxWidth" Value="230"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -40,6 +41,8 @@
         </Grid.RowDefinitions>
 
         <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0" FontSize="42" Text="МЕНЮ"/>
+        <Button x:Name="deleteBtn" Content="ВЫЙТИ" Style="{StaticResource btnEntry}" Foreground="#ffffff" FontSize="17" MaxWidth="130"
+                MaxHeight="40" Margin="0 30 15 0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="deleteBtn_Click"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

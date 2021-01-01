@@ -11,7 +11,7 @@ namespace aunteficationAdminForm
     class dataBase
     {
 
-        MySqlConnection connect = new MySqlConnection("server=localhost;port=3307;username=root;password=root;database=japaneseproject");
+        public readonly MySqlConnection connect = new MySqlConnection("server=localhost;port=3307;username=root;password=root;database=japaneseproject");
 
         DataTable dataTable = new DataTable();
         MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
@@ -74,6 +74,29 @@ namespace aunteficationAdminForm
 
             dataAdapter.SelectCommand = command;
             dataAdapter.Fill(dataTable);
+        }
+
+        public static DataTable getDataTable(string commandSql)
+        {
+            DataTable dataTable = new DataTable();
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand(commandSql,
+                new MySqlConnection("server=localhost;port=3307;username=root;password=root;database=japaneseproject"));
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(dataTable);
+
+            return dataTable;
+        }
+
+        public static MySqlCommand getCommand(string commandSql)
+        {
+            DataTable dataTable = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand(commandSql, 
+                new MySqlConnection("server=localhost;port=3307;username=root;password=root;database=japaneseproject"));
+
+            return command;
         }
 
         // В замарозке

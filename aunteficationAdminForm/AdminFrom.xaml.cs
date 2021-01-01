@@ -26,6 +26,7 @@ namespace aunteficationAdminForm
         SchoolList schoolList = new SchoolList();
         SchoolProgram schoolProgram = new SchoolProgram();
         SearchFormClients searchClient = new SearchFormClients();
+        public Autorization autorization = new Autorization();
         public AdminFrom()
         {
             InitializeComponent();
@@ -60,6 +61,15 @@ namespace aunteficationAdminForm
                     this.Close();
                     regUser.Show();
                     break;
+            }
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if((MessageBox.Show("Вы точно хотите выйти?", "", MessageBoxButton.YesNo, MessageBoxImage.Question)) == MessageBoxResult.Yes)
+            {
+                this.Close();
+                autorization.Show();
             }
         }
     }

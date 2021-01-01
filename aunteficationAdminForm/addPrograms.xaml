@@ -1,0 +1,99 @@
+﻿<Window xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"  xmlns:Obselete="clr-namespace:Xceed.Wpf.Toolkit.Obselete;assembly=aunteficationAdminForm"  x:Class="aunteficationAdminForm.addPrograms"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aunteficationAdminForm"
+        mc:Ignorable="d"
+        Title="addPrograms" Height="380" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="20 5 0 0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="#ff676b"/>
+            <Setter Property="BorderThickness" Value="0 0 0 2" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="MaxLength" Value="9"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" x:Name="textLabel" Text="" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" FontSize="22"/>
+        <Button x:Name="beforeBtn" Content="Назад" Margin="6" HorizontalAlignment="Left" Width="50" Click="beforeBtn_Click"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.67*"/>
+                <RowDefinition Height="0.58*"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="20 5 0 0">
+                <Label Content="Период"/>
+                <TextBlock x:Name="periodText" Text="" FontSize="23"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" >
+                <Label Content="* Взнос за рассмотрение документов"/>
+                <Border>
+                    <TextBox x:Name="exams" Width="200" Height="30" />
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <Label Content="Вступительный взнос"/>
+                <Border>
+                    <TextBox x:Name="vstupExams" Width="200" Height="30"/>
+                </Border>
+            </StackPanel>
+            
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <Label Content="* Обучение"/>
+                <Border Margin="0 10 0 0">
+                    <TextBox x:Name="education" Width="200" Height="30" TextWrapping="Wrap"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Label Content="* культурная программа"/>
+                <Border>
+                    <TextBox x:Name="culturProgram" Width="200" Height="30" TextWrapping="Wrap"/>
+
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <Label Content="* Страховка и учебные материалы"/>
+                <Border>
+                    <TextBox x:Name="insuranseTr" Width="200" Height="30" TextWrapping="Wrap"/>
+
+                </Border>
+            </StackPanel>
+
+            <Button Grid.Row="3" x:Name="btnResult" Content="ПРИМЕНИТЬ" Width="100" Height="35" HorizontalAlignment="Left"
+                    Margin="10 0 0 5" Style="{StaticResource btnEntry}" Foreground="#ffffff" Click="btnResult_Click"/>
+
+        </Grid>
+    </Grid>
+</Window>

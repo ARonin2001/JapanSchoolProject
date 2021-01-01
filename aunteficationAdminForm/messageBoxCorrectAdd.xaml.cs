@@ -25,6 +25,7 @@ namespace aunteficationAdminForm
         public string id;
         public string commandSql;
         public static bool ready = false;
+        public bool result = false;
 
         public messageBoxCorrectAdd(string[] nameTBox)
         {
@@ -85,10 +86,10 @@ namespace aunteficationAdminForm
                 this.Close();
                 MessageBox.Show(result);
             }
-            catch
+            catch (Exception ex)
             {
                 this.Close();
-                MessageBox.Show("Неизвестная ошибка", "Error",
+                MessageBox.Show(ex.Message, "Error",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }

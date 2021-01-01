@@ -33,8 +33,12 @@ namespace aunteficationAdminForm
             if (login.Text != "" && login.Text != " ")
             {
                 registrationUsers rgUsers = new registrationUsers("autoriz_op", "operator");
-                MessageBox.Show(rgUsers.intoDateUser("operator_idoperator", "idoperator", login.Text));
+                rgUsers.intoDateUser("operator_idoperator", "idoperator", login.Text);
                 MessageBox.Show("Всё сработало!)");
+
+                AdminFrom ad = new AdminFrom();
+                this.Close();
+                ad.Show();
             }
         }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aunteficationAdminForm"
         mc:Ignorable="d"
-        Title="Вспомнить всё" Height="300" Width="320">
+        Title="Вспомнить всё" Height="400" Width="320" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Template">
@@ -35,8 +35,16 @@
             <Border BorderThickness="0 0 0 2" BorderBrush="#ff676b">
                 <TextBox x:Name="Email" Margin="0 5 0 0" MinHeight="30" />
             </Border>
+            <Label Content="Пароль" FontSize="13" Margin="0 10 0 0"/>
+            <Border BorderThickness="0 0 0 2" BorderBrush="#ff676b">
+                <TextBox x:Name="parol" Margin="0 5 0 0" MinHeight="30" IsEnabled="False"/>
+            </Border>
 
-            <Button Canvas.Right="0" Content="ВСПОМНИТЬ" Foreground="#ffffff" Cursor="Hand" MinWidth="70" HorizontalAlignment="Right" Margin="0 10 0 0" Click="Button_Click"/>
+            <Button x:Name="btnMail" Canvas.Right="0" Content="ВЫПОЛНИТЬ" Foreground="#ffffff" Cursor="Hand" MinWidth="70" HorizontalAlignment="Right"
+                    Margin="0 10 0 0" Click="Button_Click"/>
+
+            <Button x:Name="btnParol" Canvas.Right="0" Content="ВСПОМНИТЬ" Foreground="#ffffff" Cursor="Hand" MinWidth="70" HorizontalAlignment="Right" 
+                    Margin="0 -28 0 0"  Visibility="Hidden" Click="btnParol_Click"/>
         </StackPanel>
 
         <TextBlock Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 0 0 0" TextWrapping="Wrap"

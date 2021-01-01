@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:aunteficationAdminForm"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:Obselete="clr-namespace:Xceed.Wpf.Toolkit.Obselete;assembly=Xceed.Wpf.Toolkit" x:Class="aunteficationAdminForm.RegistrationUser"
         mc:Ignorable="d"
-        Title="RegistrationUser" Height="460" Width="800">
+        Title="RegistrationUser" Height="460" Width="800" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Style TargetType="Button">

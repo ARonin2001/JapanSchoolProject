@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aunteficationAdminForm"
         mc:Ignorable="d"
-        Title="RegistrationOperator" Height="270" Width="320">
+        Title="RegistrationOperator" Height="270" Width="320" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Template">
@@ -29,10 +29,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Name="Title" Text="ВОССТАНОВИТЬ ПАРОЛЬ" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Grid.ColumnSpan="2" Margin="16,13,16,12" />
+        <TextBlock Name="Title" Text="СОЗДАТЬ ПАРОЛЬ" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Grid.ColumnSpan="2" Margin="16,13,16,12" />
 
         <StackPanel Grid.Row="1" Margin="0 20 0 0" MaxWidth="250" Grid.ColumnSpan="2">
-            <Label Content="Логин" FontSize="13"/>
+            <Label Content="Пароль" FontSize="13"/>
             <Border BorderThickness="0 0 0 2" BorderBrush="#ff676b">
                 <TextBox x:Name="login" Margin="0 5 0 0" MinHeight="30" TextChanged="login_TextChanged"/>
             </Border>

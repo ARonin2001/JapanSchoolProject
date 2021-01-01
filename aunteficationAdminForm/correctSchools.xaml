@@ -1,0 +1,98 @@
+﻿<Window x:Class="aunteficationAdminForm.correctSchools"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aunteficationAdminForm"
+        mc:Ignorable="d"
+        Title="correctSchools" Height="550" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="20 5 0 0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="#ff676b"/>
+            <Setter Property="BorderThickness" Value="0 0 0 2" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="РЕДАКТИРОВАТЬ ШКОЛУ" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.40*"/>
+                <RowDefinition Height="0.40*"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="20 5 0 0">
+                <Label Content="* Наименование"/>
+                <Border>
+                    <TextBox x:Name="name" Width="200" Height="30" Margin="0 5 0 0"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Label Content="* Адрес"/>
+                <Border>
+                    <TextBox x:Name="adres" Width="200" Height="30" Margin="0 5 0 0"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <Label Content="* Описание"/>
+                <Border BorderThickness="2"  Margin="0 5 0 0">
+                    <TextBox x:Name="description" Width="200" MinHeight="100" MinWidth="300" TextWrapping="Wrap"/>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="0.20*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <StackPanel>
+                    <Label Content="Фото"/>
+                    <Button x:Name="btnAddPhoto" Content="ДОБАВИТЬ" Width="100" HorizontalAlignment="Right" Style="{StaticResource btnEntry}" Foreground="#ffffff"/>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 25 0 0">
+                    <Label Content="Общежитие"/>
+                    <ComboBox x:Name="dormitories" Width="150"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 12 0 0">
+                        <Button x:Name="btnAddDormitory" Content="Редактировать" Width="100" HorizontalAlignment="Right" Style="{StaticResource btnEntry}" Margin="0 0 20 0" Foreground="#ffffff"/>
+                        <Button x:Name="btnCorrectDormitory" Content="ДОБАВИТЬ" Width="100" HorizontalAlignment="Right" Style="{StaticResource btnEntry}" Foreground="#ffffff"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1">
+                <StackPanel>
+                    <Label Content="* Короткая программа" Margin="0 10 0 0"/>
+                    <Button x:Name="btnCorrectShortprogram" Content="РЕДАКТИРОВАТЬ" Style="{StaticResource btnEntry}" Margin="0 0 20 0" Foreground="#ffffff"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="* Длительная программа" Margin="0 10 0 0"/>
+                    <Button x:Name="btnCorrectLongprogram" Content="РЕДАКТИРОВАТЬ" Style="{StaticResource btnEntry}" Margin="0 0 20 0" Foreground="#ffffff"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Grid.Row="2" x:Name="btnResult" Content="ДОБАВИТЬ" Width="100" Height="35" HorizontalAlignment="Left"
+                    Margin="10 0 0 0" Style="{StaticResource btnEntry}" Foreground="#ffffff"/>
+        </Grid>
+    </Grid>
+</Window>
